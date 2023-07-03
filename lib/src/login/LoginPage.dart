@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/src/api/ApiHelper.dart';
-class LoginPage extends StatefulWidget {
+import 'package:logger/logger.dart';
 
+class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -35,7 +36,9 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-void onClick(){
+void onClick() {
   print("Button clicked");
-  callApi();
+  Future<String> future = Future(() => callApi());
+  var logger = Logger();
+  future.then((value) => logger.e(value));
 }
