@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_learning/src/api/ApiHelper.dart';
 class LoginPage extends StatefulWidget {
 
   @override
@@ -21,7 +21,8 @@ class _LoginPageState extends State<LoginPage> {
               color: Colors.blue, borderRadius: BorderRadius.circular(10)),
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pop(context);
+              // Navigator.pop(context);
+              onClick();
             },
             child: Text(
               'Welcome',
@@ -32,4 +33,9 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+}
+
+void onClick(){
+  print("Button clicked");
+  callApi();
 }
