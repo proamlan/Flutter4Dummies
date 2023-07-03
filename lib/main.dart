@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_learning/src/home/LoginPage.dart';
 import 'package:flutter_learning/src/utils/Constants.dart';
 import 'package:flutter_learning/src/splash/Splash.dart';
+import 'package:flutter_learning/src/ui/MovieList.dart';
 
 void main() {
   print("count is : $count");
-  // runApp(MyApp());
-  runApp(SplashScreen());
+  runApp(MyApp());
+  // runApp(MovieList());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginDemo(),
+      home: MovieList(),
     );
   }
 }
