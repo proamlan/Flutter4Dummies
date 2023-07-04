@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter_learning/src/models/MovieDetails.dart';
 import 'package:flutter_learning/src/models/MovieItem.dart';
 import 'package:flutter_learning/src/utils/Constants.dart';
 import 'package:http/http.dart' show Client;
@@ -21,6 +22,19 @@ class MovieApiProvider {
       return MovieItem.fromJson(json.decode(response.body));
     } else {
       throw Exception("Failed to load posts");
+    }
+  }
+
+  Future<MovieDetails> fetchMovieDetails(String movieId) async {
+    var logger = Logger();
+    logger.e("Entered Api calls");
+    var uri =
+        Uri.parse("https://api.themoviedb.org/3/movie/$movieId?language=en-US");
+    final response = await client.get(uri);
+    if (response.statusCode == 200) {
+      return MovieDetails.fromJson(json.decode(response.body.toString()));
+    } else {
+      throw Exception("Failed to get details");
     }
   }
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '../models/MovieItem.dart';
+import 'package:logger/logger.dart';
+
 import '../blocs/MovieSuggestionBloc.dart';
+import '../models/MovieItem.dart';
 
 class MovieList extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     bloc.fetchAllMovies();
@@ -27,15 +28,30 @@ class MovieList extends StatelessWidget {
 
   Widget buildList(AsyncSnapshot<MovieItem> snapShot) {
     return GridView.builder(
-      itemCount: snapShot.data?.results.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2),
-      itemBuilder: (BuildContext context, int index) {
-        return Image.network(
-          'https://image.tmdb.org/t/p/w185${snapShot.data?.results[index]
-              .posterPath}',
-          fit: BoxFit.cover,);
-      },);
+        itemCount: snapShot.data?.results.length,
+        gridDelegate:
+        SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemBuilder: (BuildContext context, int index) {
+          return GridTile(
+            child: InkResponse(
+                enableFeedback: true,
+                child: Image.network(
+                  'https://image.tmdb.org/t/p/w185${snapShot.data
+                      ?.results[index].posterPath}',
+                  fit: BoxFit.cover,
+                ),
+                onTap: () => openDetailsPage(snapShot.data, index)),
+          );
+        });
   }
 
+  @override
+  void dispose() {
+    bloc.dispose();
+  }
+
+  openDetailsPage(MovieItem? data, int index) {
+    var logger = Logger();
+    logger.e("Movie Item" + data.toString());
+  }
 }
