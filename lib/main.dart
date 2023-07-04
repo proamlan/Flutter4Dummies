@@ -7,7 +7,6 @@ import 'package:flutter_learning/src/ui/MovieList.dart';
 void main() {
   print("count is : $count");
   runApp(MyApp());
-  // runApp(MovieList());
 }
 
 class MyApp extends StatelessWidget {

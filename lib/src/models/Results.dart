@@ -29,7 +29,7 @@ class Results {
     releaseDate = json['release_date'];
     title = json['title'];
     video = json['video'];
-    voteAverage = json['vote_average'];
+    voteAverage = json['vote_average'] == null ? 0.0 : json['vote_average'].toDouble();
     voteCount = json['vote_count'];
   }
 

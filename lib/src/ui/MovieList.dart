@@ -30,24 +30,13 @@ class MovieList extends StatelessWidget {
     return GridView.builder(
         itemCount: snapShot.data?.results.length,
         gridDelegate:
-        SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
-          return GridTile(
-            child: InkResponse(
-                enableFeedback: true,
-                child: Image.network(
-                  'https://image.tmdb.org/t/p/w185${snapShot.data
-                      ?.results[index].posterPath}',
-                  fit: BoxFit.cover,
-                ),
-                onTap: () => openDetailsPage(snapShot.data, index)),
+          return Image.network(
+            'https://image.tmdb.org/t/p/w185${snapShot.data?.results[index].posterPath}',
+            fit: BoxFit.cover,
           );
         });
-  }
-
-  @override
-  void dispose() {
-    bloc.dispose();
   }
 
   openDetailsPage(MovieItem? data, int index) {
