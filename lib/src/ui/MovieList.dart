@@ -12,7 +12,8 @@ class MovieList extends StatelessWidget {
       appBar: AppBar(
         title: Text("Movie Suggestions"),
       ),
-      body: StreamBuilder(
+      body:
+      StreamBuilder(
         stream: bloc.allMovies,
         builder: (context, AsyncSnapshot<MovieItem> snapShot) {
           if (snapShot.hasData) {

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_learning/src/junk/GrandientContainer.dart';
 import 'package:flutter_learning/src/utils/Constants.dart';
-import 'package:flutter_learning/src/splash/Splash.dart';
-import 'package:flutter_learning/src/ui/MovieList.dart';
 
 void main() {
   print("count is : $count");
@@ -14,7 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MovieList(),
+      // home: MovieList(),
+      home: GradientContainer(
+          Color.fromARGB(255, 26, 2, 80), Color.fromARGB(255, 45, 7, 98)),
     );
   }
 }
